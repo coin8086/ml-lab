@@ -1,5 +1,5 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",    
+  "image": "mcr.microsoft.com/devcontainers/python:0-3.11",
   "features": {
       "ghcr.io/devcontainers/features/python:1": {
           "installJupyterlab": "true"
@@ -12,14 +12,11 @@
           "command": "eval \"$(curl -L https://raw.githubusercontent.com/coin8086/simple-host-settings/master/setup)\""
       }
   },
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Set *default* container specific settings.json values on container create.
-			"settings": {
-				"python.defaultInterpreterPath": "/usr/local/bin/python"
-			}
-		}
-	}
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  }
 }
