@@ -1,1 +1,1 @@
-# ml-math-scratch
+# ml-scratch
