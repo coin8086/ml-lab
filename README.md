@@ -1,5 +1,7 @@
-# 机器学习涂鸦
+# 机器学习实验室
 
-TODO:
+## 运行环境
 
-* [自动微分](https://pytorch.org/docs/stable/notes/autograd.html)
+* VS Code
+* [Pytorch](https://pytorch.org/get-started/locally/)
+* [Jupyter Notebook](https://jupyter.org/install)
