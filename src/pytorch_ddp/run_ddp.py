@@ -1,7 +1,7 @@
 import argparse
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 from torchvision.transforms import ToTensor
 
@@ -12,6 +12,20 @@ from operations import train_loop, test_loop
 
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
+
+def partition_dataset(dataset, partition_count, partition_idx):
+    assert partition_idx < partition_count and partition_idx >= 0
+
+    data_size = len(dataset)
+    partition_size = data_size // partition_count
+    start_idx = partition_idx * partition_size
+    if start_idx + partition_size > data_size:
+        stop_idx = data_size
+    else:
+        stop_idx = start_idx + partition_size
+
+    return Subset(dataset, range(start_idx, stop_idx))
+
 
 def run(rank, world_size, download_only = False, test_only = False, load_file_path = None, save_file_path = None, epochs = 5):
     #######################################
@@ -35,6 +49,7 @@ def run(rank, world_size, download_only = False, test_only = False, load_file_pa
     if download_only:
         return
 
+    training_data = partition_dataset(training_data, world_size, rank)
     train_dataloader = DataLoader(training_data, batch_size=64)
     test_dataloader = DataLoader(test_data, batch_size=64)
 
