@@ -1,5 +1,7 @@
 import torch.nn as nn
 
+# Refer to https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
+
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()

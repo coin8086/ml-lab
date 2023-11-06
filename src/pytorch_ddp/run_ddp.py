@@ -8,10 +8,8 @@ from torchvision.transforms import ToTensor
 from neural_network import NeuralNetwork
 from operations import train_loop, test_loop
 
-#######################################
-# For DDP
-# Refer to https://pytorch.org/tutorials/intermediate/ddp_tutorial.html
-#
+# For DDP, refer to https://pytorch.org/tutorials/intermediate/ddp_tutorial.html
+
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 

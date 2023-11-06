@@ -1,5 +1,7 @@
 import torch
 
+# Refer to https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
+
 def train_loop(dataloader, model, loss_fn, optimizer, device):
     size = len(dataloader.dataset)
     # Set the model to training mode - important for batch normalization and dropout layers
