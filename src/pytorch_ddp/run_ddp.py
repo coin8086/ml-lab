@@ -112,6 +112,8 @@ def main():
         dist.init_process_group("nccl")
         rank = dist.get_rank()
         print(f"Start running DDP on rank {rank}.")
+    else:
+        rank = None
 
     run(rank, args.world_size,
         download_only=args.download_only,
