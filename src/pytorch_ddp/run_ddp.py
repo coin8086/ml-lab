@@ -100,8 +100,8 @@ def run(rank, world_size, download_only = False, test_only = False, load_file_pa
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", action="store_true", dest="download_only", help="download training data and exit without training")
-    parser.add_argument("-t", action="store_true", dest="test_only", help="test a model without training")
+    parser.add_argument("-d", dest="download_only", action="store_true", help="download training data and exit without training")
+    parser.add_argument("-t", dest="test_only", action="store_true", help="test a model without training")
     parser.add_argument("-l", dest="load_file_path", help="load trained model from the file path")
     parser.add_argument("-s", dest="save_file_path", help="save trained model to the file path")
     parser.add_argument("-e", dest="epochs", type=int, default=5, help="epochs to train a model")
