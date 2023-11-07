@@ -45,7 +45,8 @@ def run(download_only = False, test_only = False, load_file_path = None, save_fi
     print(f"Using {device} device")
 
     if load_file_path:
-        model = torch.load(load_file_path).to(device)
+        # Specify map_location so that GPU trained model can be loaded to (cpu) device
+        model = torch.load(load_file_path, map_location=device)
         model.eval()
     else:
         model = NeuralNetwork().to(device)

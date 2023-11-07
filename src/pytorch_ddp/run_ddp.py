@@ -1,3 +1,4 @@
+import os
 import argparse
 import torch
 import torch.nn as nn
@@ -98,6 +99,9 @@ def run(rank, world_size, download_only = False, test_only = False, load_file_pa
         # Therefore, saving it in one process is sufficient.
         torch.save(ddp_model.state_dict(), save_file_path)
 
+        # Also save the internal model
+        file, _ = os.path.splitext(save_file_path)
+        torch.save(ddp_model.module, file + ".model.pt")
 
 def main():
     parser = argparse.ArgumentParser()
