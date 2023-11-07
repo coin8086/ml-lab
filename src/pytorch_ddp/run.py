@@ -46,6 +46,7 @@ def run(download_only = False, test_only = False, load_file_path = None, save_fi
 
     if load_file_path:
         model = torch.load(load_file_path).to(device)
+        model.eval()
     else:
         model = NeuralNetwork().to(device)
 

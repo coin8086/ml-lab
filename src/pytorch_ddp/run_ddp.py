@@ -66,6 +66,7 @@ def run(rank, world_size, download_only = False, test_only = False, load_file_pa
         # Configure map_location properly
         map_location = { 'cuda:%d' % 0: 'cuda:%d' % device_id }
         ddp_model.load_state_dict(torch.load(load_file_path, map_location=map_location))
+        ddp_model.eval()
 
     print(ddp_model)
 
