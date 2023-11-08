@@ -37,11 +37,7 @@ def run(download_only = False, test_only = False, load_file_path = None, save_fi
     # Build Model
     #
 
-    device = (
-        "cuda"
-        if torch.cuda.is_available()
-        else "cpu"
-    )
+    device = ("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using {device} device")
 
     if load_file_path:
