@@ -1,8 +1,12 @@
-# 机器学习实验室
+# AI Lab
 
-## 运行环境
+## Lab Environment
 
-* VS Code
-* [NumPy](https://numpy.org/install/) (Included in Pytorch installation)
-* [Pytorch](https://pytorch.org/get-started/locally/)
+* Python 3
 * [Jupyter Notebook](https://jupyter.org/install)
+* VS Code + WSL is recommended, while it can be any local/cloud environment with Python 3 and Jupyter Notebook.
+
+## Dependent Packages
+
+* [NumPy](https://numpy.org/install/)
+* [PyTorch](https://pytorch.org/get-started/locally/) with or without CUDA support. A few programs can not run without CUDA.
