@@ -111,17 +111,18 @@ def main():
     parser.add_argument("-l", dest="load_file_path", help="load trained model from the file path")
     parser.add_argument("-s", dest="save_file_path", help="save trained model to the file path")
     parser.add_argument("-e", dest="epochs", type=int, default=5, help="epochs to train a model")
-    parser.add_argument("-w", dest="world_size", type=int, help="total number of parellel processes on all nodes")
     args = parser.parse_args()
 
     if not args.download_only:
         dist.init_process_group("nccl")
         rank = dist.get_rank()
-        print(f"Start running DDP on rank {rank}.")
+        world_size = dist.get_world_size()
+        print(f"Start training on rank {rank} of world size {world_size}.")
     else:
         rank = None
+        world_size = None
 
-    run(rank, args.world_size,
+    run(rank, world_size,
         download_only=args.download_only,
         test_only=args.test_only,
         load_file_path=args.load_file_path,

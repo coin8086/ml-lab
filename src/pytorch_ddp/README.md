@@ -6,6 +6,7 @@ The example is modified on [the example of PyTorch Tutorial](https://pytorch.org
 * https://pytorch.org/docs/stable/notes/ddp.html
 * https://pytorch.org/tutorials/intermediate/ddp_tutorial.html
 * https://pytorch.org/tutorials/intermediate/dist_tuto.html
+* https://pytorch.org/docs/stable/elastic/run.html
 
 ## How to run
 
@@ -16,11 +17,10 @@ The example is modified on [the example of PyTorch Tutorial](https://pytorch.org
 * For `run_ddp.py`, an example command line could be
 
   ```bash
-  python3 -m torch.distributed.run --nnodes=2 --nproc_per_node=4 --rdzv_id=100 --rdzv_backend=c10d --rdzv_endpoint=hostname:29400 /path/to/run_ddp.py -w 8
+  python3 -m torch.distributed.run --nnodes=2 --nproc_per_node=4 --rdzv_id=100 --rdzv_backend=c10d --rdzv_endpoint=hostname:29400 /path/to/run_ddp.py
   ```
 
   Points to note here:
     * nnodes is the nubmer of nodes/VMs, on which `run_ddp.py` will run.
     * nproc_per_node is the number of processes per node/VM for `run_ddp.py`. One GPU can have only one such process. So if there are 4 GPUs on one node/VM, then the max nubmer for nproc_per_node is 4.
-    * -w is the total number of paralell processes across all nodes. It must be nnodes * nproc_per_node.
     * hostname is the host name/IP of one node/VM among all nodes running `run_ddp.py`
