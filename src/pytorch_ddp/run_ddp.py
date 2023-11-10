@@ -28,20 +28,20 @@ def partition_dataset(dataset, partition_count, partition_idx):
     return Subset(dataset, range(start_idx, stop_idx))
 
 
-def run(rank, world_size, download_only = False, test_only = False, load_file_path = None, save_file_path = None, epochs = 5):
+def run(rank, world_size, download_only = False, data_root='/tmp/data', test_only = False, load_file_path = None, save_file_path = None, epochs = 5):
     #######################################
     # Load Data
     #
 
     training_data = datasets.FashionMNIST(
-        root="/tmp/data",
+        root=data_root,
         train=True,
         download=True,
         transform=ToTensor()
     )
 
     test_data = datasets.FashionMNIST(
-        root="/tmp/data",
+        root=data_root,
         train=False,
         download=True,
         transform=ToTensor()
@@ -106,6 +106,7 @@ def run(rank, world_size, download_only = False, test_only = False, load_file_pa
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", dest="download_only", action="store_true", help="download training data and exit without training")
+    parser.add_argument("-r", dest="data_root", default="/tmp/data", help="root directory for training and test data")
     parser.add_argument("-t", dest="test_only", action="store_true", help="test a model without training")
     parser.add_argument("-l", dest="load_file_path", help="load trained model from the file path")
     parser.add_argument("-s", dest="save_file_path", help="save trained model to the file path")
