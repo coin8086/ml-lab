@@ -1,6 +1,6 @@
 # PyTorch Distributed Data Parallel Examples
 
-The exmples show how to use PyTorch DDP (Distributed Data Parallel):
+The examples show how to use PyTorch DDP (Distributed Data Parallel):
 
 * `run.py` is a basic example without parallel.
 * `run_ddp.py` is a parallel example. It requires CUDA.
@@ -25,6 +25,6 @@ Reference:
   ```
 
   Points to note here:
-    * `nnodes` is the nubmer of nodes/VMs, on which `run_ddp.py` will run.
-    * `nproc_per_node` is the number of processes per node/VM for `run_ddp.py`. In our example, one process has exclusive access to one GPU. So when there are 4 GPUs per node/VM, the max nubmer for nproc_per_node is 4.
+    * `nnodes` is the number of nodes/VMs, on which `run_ddp.py` will run.
+    * `nproc_per_node` is the number of processes per node/VM for `run_ddp.py`. In our example, one process has exclusive access to one GPU. So when there are 4 GPUs per node/VM, the max number for nproc_per_node is 4.
     * `rdzv_endpoint` hostname is the name/IP of one node/VM of all nodes running the command (process of rank 0 will be started on that host).
